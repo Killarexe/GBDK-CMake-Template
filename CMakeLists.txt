@@ -55,7 +55,7 @@ set(CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> -c -o <OBJECT> <SOURCE>")
 set(CMAKE_C_LINK_EXECUTABLE "<CMAKE_C_COMPILER> -o <TARGET> <OBJECTS>")
 
 # Add your source files here
-set(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.c")
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.c")
 
 # Create custom target for GameBoy ROM
 add_custom_target(${PROJECT_NAME}.gb ALL
@@ -63,7 +63,6 @@ add_custom_target(${PROJECT_NAME}.gb ALL
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     DEPENDS ${SOURCES}
     COMMENT "Building GameBoy ROM"
-    QUIET FALSE
 )
 
 # Set include directories
